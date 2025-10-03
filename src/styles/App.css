@@ -1,90 +1,150 @@
+/* Global Styles */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-.app-container {
-  max-width: 500px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 24px;
-}
-
-h1 {
-  text-align: center;
-  color: #333;
-}
-
-.todo-list {
-  margin-top: 24px;
-}
-
-.todo-form {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.todo-form input {
-  flex: 1;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.todo-form button {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  background: #1976d2;
-  color: #fff;
+/* Custom styles for enhanced UI */
+.todo-item-card {
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.todo-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.todo-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+.hover-shadow:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
 }
 
-.todo-item.completed .todo-text {
-  color: #aaa;
+.todo-items-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
-.todo-item button {
-  background: #eee;
+/* Custom scrollbar */
+.todo-items-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-items-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.todo-items-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.todo-items-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Button hover effects */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Card enhancements */
+.card {
   border: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
+  border-radius: 15px;
+  background: white;
 }
 
-.todo-item button:hover {
-  background: #1976d2;
-  color: #fff;
+.card-body {
+  padding: 2rem;
 }
 
-.edit-form {
-  display: flex;
-  gap: 8px;
+/* Badge styling */
+.badge {
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
 }
 
-@media (max-width: 600px) {
-  .app-container {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 12px;
+/* Footer */
+footer {
+  margin-top: auto;
+}
+
+/* Navbar enhancements */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Modal styling */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modal-footer {
+  border: none;
+}
+
+/* Form controls */
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  border-color: #667eea;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .todo-item-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .todo-item-card .d-flex.gap-2 {
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand span {
+    font-size: 1.2rem;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
   }
 }
