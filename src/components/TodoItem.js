@@ -27,10 +27,13 @@ function TodoItem({ todo, updateTodo, deleteTodo, toggleComplete }) {
         </form>
       ) : (
         <>
+          <div 
+            className="todo-checkbox"
+            onClick={() => toggleComplete(todo.id)}
+          />
           <span
             className="todo-text"
             onClick={() => toggleComplete(todo.id)}
-            style={{ textDecoration: todo.completed ? 'line-through' : 'none', cursor: 'pointer' }}
           >
             {todo.text}
           </span>

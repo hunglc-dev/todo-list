@@ -5,7 +5,7 @@ import './styles/App.css';
 function App() {
   return (
     <div className="app-container">
-      <h1>Todo List 2</h1>
+      <h1>✨ My Tasks</h1>
       <Home />
     </div>
   );
