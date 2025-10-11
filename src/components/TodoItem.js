@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ListItem, ListItemText, Checkbox, IconButton, TextField, Button, Box } from '@mui/material';
+import { Edit, Delete, Save } from '@mui/icons-material';
 
 function TodoItem({ todo, updateTodo, deleteTodo, toggleComplete }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -13,32 +15,48 @@ function TodoItem({ todo, updateTodo, deleteTodo, toggleComplete }) {
   };
 
   return (
-    <li className={`todo-item${todo.completed ? ' completed' : ''}`}>
+    <ListItem
+      disablePadding
+      secondaryAction={
+        isEditing ? (
+          <IconButton edge="end" aria-label="save" onClick={handleEdit}>
+            <Save />
+          </IconButton>
+        ) : (
+          <Box>
+            <IconButton edge="end" aria-label="edit" onClick={() => setIsEditing(true)}>
+              <Edit />
+            </IconButton>
+            <IconButton edge="end" aria-label="delete" onClick={() => deleteTodo(todo.id)}>
+              <Delete />
+            </IconButton>
+          </Box>
+        )
+      }
+    >
       {isEditing ? (
-        <form onSubmit={handleEdit} className="edit-form">
-          <input
-            type="text"
+        <Box component="form" onSubmit={handleEdit} sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+          <TextField
+            variant="standard"
+            fullWidth
             value={editText}
             onChange={e => setEditText(e.target.value)}
             autoFocus
           />
-          <button type="submit">Lưu</button>
-          <button type="button" onClick={() => setIsEditing(false)}>Hủy</button>
-        </form>
+        </Box>
       ) : (
         <>
-          <span
-            className="todo-text"
+          <Checkbox
+            edge="start"
+            checked={todo.completed}
+            tabIndex={-1}
+            disableRipple
             onClick={() => toggleComplete(todo.id)}
-            style={{ textDecoration: todo.completed ? 'line-through' : 'none', cursor: 'pointer' }}
-          >
-            {todo.text}
-          </span>
-          <button onClick={() => setIsEditing(true)}>Sửa</button>
-          <button onClick={() => deleteTodo(todo.id)}>Xóa</button>
+          />
+          <ListItemText primary={todo.text} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }} />
         </>
       )}
-    </li>
+    </ListItem>
   );
 }
 

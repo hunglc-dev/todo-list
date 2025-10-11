@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextField, Button, List, Paper, Typography, Box } from '@mui/material';
 import TodoItem from './TodoItem';
 
 function TodoList({ todos, addTodo, updateTodo, deleteTodo, toggleComplete }) {
@@ -13,17 +14,23 @@ function TodoList({ todos, addTodo, updateTodo, deleteTodo, toggleComplete }) {
   };
 
   return (
-    <div className="todo-list">
-      <form onSubmit={handleAdd} className="todo-form">
-        <input
-          type="text"
+    <Paper elevation={3} sx={{ p: 2 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        My Todos
+      </Typography>
+      <Box component="form" onSubmit={handleAdd} sx={{ display: 'flex', gap: 1, mb: 2 }}>
+        <TextField
+          label="Add a new task"
+          variant="outlined"
+          fullWidth
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Thêm task mới..."
         />
-        <button type="submit">Thêm</button>
-      </form>
-      <ul>
+        <Button type="submit" variant="contained" color="primary" sx={{ whiteSpace: 'nowrap' }}>
+          Add Task
+        </Button>
+      </Box>
+      <List>
         {todos.map(todo => (
           <TodoItem
             key={todo.id}
@@ -33,8 +40,8 @@ function TodoList({ todos, addTodo, updateTodo, deleteTodo, toggleComplete }) {
             toggleComplete={toggleComplete}
           />
         ))}
-      </ul>
-    </div>
+      </List>
+    </Paper>
   );
 }
 
