@@ -1,25 +1,8 @@
 import React from 'react';
-import TodoList from '../components/TodoList';
-import useTodos from '../hooks/useTodos';
+import Board from '../components/Board';
 
 function Home() {
-  const {
-    todos,
-    addTodo,
-    updateTodo,
-    deleteTodo,
-    toggleComplete
-  } = useTodos();
-
-  return (
-    <TodoList
-      todos={todos}
-      addTodo={addTodo}
-      updateTodo={updateTodo}
-      deleteTodo={deleteTodo}
-      toggleComplete={toggleComplete}
-    />
-  );
+  return <Board />;
 }
 
 export default Home;
